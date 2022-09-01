@@ -164,4 +164,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_activity_tv_tails_percent" />
+
+    <EditText
+        android:id="@+id/main_activity_et_simulate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:fontFamily="@font/coda"
+        android:hint="@string/hint_sim_text"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="@color/dark_blue"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/main_activity_bt_simulate"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_pb_tail"
+        app:layout_constraintVertical_bias="0.15" />
+
+    <Button
+        android:id="@+id/main_activity_bt_simulate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/panache"
+        android:text="@string/text_sim_button"
+        android:textColor="@color/dark_blue"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/main_activity_et_simulate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/main_activity_et_simulate"
+        app:layout_constraintTop_toTopOf="@+id/main_activity_et_simulate" />
 </androidx.constraintlayout.widget.ConstraintLayout>

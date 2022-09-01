@@ -9,4 +9,6 @@
     <string name="placeholder_total_tails_text">Total Tails : 0</string>
     <string name="placeholder_heads_percent">Heads : 0%</string>
     <string name="placeholder_tails_percent">Tails : 0%</string>
+    <string name="text_sim_button">Simulate</string>
+    <string name="hint_sim_text">Sim number</string>
 </resources>
