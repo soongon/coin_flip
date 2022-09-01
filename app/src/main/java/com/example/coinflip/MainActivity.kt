@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tailsPercentText: TextView
     private lateinit var headsProgressBar: ProgressBar
     private lateinit var tailsProgressBar: ProgressBar
+    private lateinit var simulateEditText: EditText
 
     private var heads = 0
     private var tails = 0
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         tailsPercentText = findViewById(R.id.main_activity_tv_tails_percent)
         headsProgressBar = findViewById(R.id.main_activity_pb_head)
         tailsProgressBar = findViewById(R.id.main_activity_pb_tail)
+        simulateEditText = findViewById(R.id.main_activity_et_simulate)
 
         simSwitch.setOnCheckedChangeListener { compoundButton, isChecked -> enableSim(isChecked) }
         flipButton.setOnClickListener { flip() }
@@ -114,7 +116,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun simulate() {
+        var simNumber = 0
+        if (simulateEditText.text.toString() != "") {
+            simNumber = simulateEditText.text.toString().toInt()
+        }
+        // 먼저 sum number 가져온다.
 
+
+        for (i in 1..simNumber) {
+            flip()
+        }
+        simulateEditText.setText("")
     }
 
 
