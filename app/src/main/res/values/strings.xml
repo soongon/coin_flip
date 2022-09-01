@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Coin Flip</string>
+    <string name="placeholder_switch_simulate">Simulation mode</string>
+    <string name="placeholder_button_flip">Flip</string>
+    <string name="placeholder_button_reset">Reset</string>
 </resources>

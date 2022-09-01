@@ -4,15 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/charlotte"
+    android:padding="20dp"
     tools:context=".MainActivity">
 
-    <TextView
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/main_activity_sw_simulate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/coda"
+        android:minHeight="48dp"
+        android:text="@string/placeholder_switch_simulate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/main_activity_iv_coin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_sw_simulate"
+        app:srcCompat="@drawable/ic_flip_icon" />
+
+    <Button
+        android:id="@+id/main_activity_bt_flip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/panache"
+        android:text="@string/placeholder_button_flip"
+        android:textColor="@color/dark_blue"
+        android:textSize="20sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/main_activity_bt_reset"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_iv_coin"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <Button
+        android:id="@+id/main_activity_bt_reset"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:backgroundTint="@color/panache"
+        android:text="@string/placeholder_button_reset"
+        android:textColor="@color/dark_blue"
+        android:textSize="20sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/main_activity_bt_flip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/main_activity_bt_flip"
+        app:layout_constraintTop_toTopOf="@+id/main_activity_bt_flip" />
 </androidx.constraintlayout.widget.ConstraintLayout>
