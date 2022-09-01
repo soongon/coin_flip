@@ -3,4 +3,8 @@
     <string name="placeholder_switch_simulate">Simulation mode</string>
     <string name="placeholder_button_flip">Flip</string>
     <string name="placeholder_button_reset">Reset</string>
+    <string name="coin_image_description">coin image</string>
+    <string name="placeholder_total_flips_text">Total Flips : 0</string>
+    <string name="placeholder_total_heads_text">Total Heads : 0</string>
+    <string name="placeholder_total_tails_text">Total Tails : 0</string>
 </resources>

@@ -15,17 +15,21 @@
         android:fontFamily="@font/coda"
         android:minHeight="48dp"
         android:text="@string/placeholder_switch_simulate"
+        android:textColor="#455A64"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
 
     <ImageView
         android:id="@+id/main_activity_iv_coin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/coin_image_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_activity_sw_simulate"
-        app:srcCompat="@drawable/ic_flip_icon" />
+        app:srcCompat="@drawable/ic_flip_icon"
+        tools:ignore="ImageContrastCheck" />
 
     <Button
         android:id="@+id/main_activity_bt_flip"
@@ -59,4 +63,47 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/main_activity_bt_flip"
         app:layout_constraintTop_toTopOf="@+id/main_activity_bt_flip" />
+
+    <TextView
+        android:id="@+id/main_activity_tv_total_flips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/coda"
+        android:text="@string/placeholder_total_flips_text"
+        android:textColor="#D32F2F"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/main_activity_tv_head_flips"
+        app:layout_constraintEnd_toEndOf="@+id/main_activity_tv_head_flips"
+        app:layout_constraintStart_toStartOf="@+id/main_activity_tv_head_flips"
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_bt_flip"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/main_activity_tv_head_flips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/coda"
+        android:text="@string/placeholder_total_heads_text"
+        android:textColor="#D32F2F"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/main_activity_tv_tail_flips"
+        app:layout_constraintEnd_toEndOf="@+id/main_activity_tv_tail_flips"
+        app:layout_constraintStart_toStartOf="@+id/main_activity_tv_tail_flips"
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_tv_total_flips" />
+
+    <TextView
+        android:id="@+id/main_activity_tv_tail_flips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/coda"
+        android:text="@string/placeholder_total_tails_text"
+        android:textColor="#D32F2F"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_tv_head_flips" />
 </androidx.constraintlayout.widget.ConstraintLayout>
