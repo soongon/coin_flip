@@ -5,21 +5,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.SwitchCompat
+import androidx.databinding.DataBindingUtil
+import com.example.coinflip.databinding.ActivityMainBinding
 import java.lang.Exception
 import kotlin.math.round
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var simEditText: EditText
-    private lateinit var simButton: Button
-    private lateinit var coinImageView: ImageView
-    private lateinit var totalFlipText: TextView
-    private lateinit var headFlipText: TextView
-    private lateinit var tailFlipText: TextView
-    private lateinit var headsPercentText: TextView
-    private lateinit var tailsPercentText: TextView
-    private lateinit var headsProgressBar: ProgressBar
-    private lateinit var tailsProgressBar: ProgressBar
-    private lateinit var simulateEditText: EditText
+
+    private lateinit var binding: ActivityMainBinding
 
     private var heads = 0
     private var tails = 0
@@ -27,36 +20,37 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        // old way
+        //setContentView(R.layout.activity_main)
 
-        val simSwitch: SwitchCompat = findViewById(R.id.main_activity_sw_simulate)
-        val flipButton: Button = findViewById(R.id.main_activity_bt_flip)
-        val resetButton: Button = findViewById(R.id.main_activity_bt_reset)
-        simButton = findViewById(R.id.main_activity_bt_simulate)
-        simEditText = findViewById(R.id.main_activity_et_simulate)
-        coinImageView = findViewById(R.id.main_activity_iv_coin)
-        totalFlipText = findViewById(R.id.main_activity_tv_total_flips)
-        headFlipText = findViewById(R.id.main_activity_tv_head_flips)
-        tailFlipText = findViewById(R.id.main_activity_tv_tail_flips)
-        headsPercentText = findViewById(R.id.main_activity_tv_heads_percent)
-        tailsPercentText = findViewById(R.id.main_activity_tv_tails_percent)
-        headsProgressBar = findViewById(R.id.main_activity_pb_head)
-        tailsProgressBar = findViewById(R.id.main_activity_pb_tail)
-        simulateEditText = findViewById(R.id.main_activity_et_simulate)
+        // new way..data binding way
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        simSwitch.setOnCheckedChangeListener { compoundButton, isChecked -> enableSim(isChecked) }
-        flipButton.setOnClickListener { flip() }
-        resetButton.setOnClickListener { reset() }
-        simButton.setOnClickListener { simulate() }
+        binding.mainActivitySwSimulate.setOnCheckedChangeListener {
+                compoundButton, isChecked -> enableSim(isChecked)
+        }
+        binding.mainActivityBtFlip.setOnClickListener { flip() }
+        binding.mainActivityBtReset.setOnClickListener { reset() }
+        binding.mainActivityBtSimulate.setOnClickListener { simulate() }
+
+// old way not using data binding
+//        simSwitch.setOnCheckedChangeListener { compoundButton, isChecked -> enableSim(isChecked) }
+//        flipButton.setOnClickListener { flip() }
+//        resetButton.setOnClickListener { reset() }
+//        simButton.setOnClickListener { simulate() }
     }
 
     private fun enableSim(checked: Boolean) {
         if (checked) {
-            simEditText.visibility = View.VISIBLE
-            simButton.visibility = View.VISIBLE
+            binding.mainActivityEtSimulate.visibility = View.VISIBLE
+            binding.mainActivityBtSimulate.visibility = View.VISIBLE
+//            simEditText.visibility = View.VISIBLE
+//            simButton.visibility = View.VISIBLE
         } else {
-            simEditText.visibility = View.INVISIBLE
-            simButton.visibility = View.INVISIBLE
+            binding.mainActivityEtSimulate.visibility = View.INVISIBLE
+            binding.mainActivityBtSimulate.visibility = View.INVISIBLE
+//            simEditText.visibility = View.INVISIBLE
+//            simButton.visibility = View.INVISIBLE
         }
     }
 
@@ -73,16 +67,21 @@ class MainActivity : AppCompatActivity() {
     private fun update(coinValue: String) {
         if (coinValue == "heads") {
             heads++
-            coinImageView.setImageResource(R.drawable.ic_head_icon)
+            binding.mainActivityIvCoin.setImageResource(R.drawable.ic_head_icon)
+            //coinImageView.setImageResource(R.drawable.ic_head_icon)
         } else {
             tails++
-            coinImageView.setImageResource(R.drawable.ic_tail_icon)
+            binding.mainActivityIvCoin.setImageResource(R.drawable.ic_tail_icon)
+            //coinImageView.setImageResource(R.drawable.ic_tail_icon)
         }
         total++
 
-        totalFlipText.text = "Total Flips : $total"
-        headFlipText.text = "Total Heads : $heads"
-        tailFlipText.text = "Total Tails : $tails"
+        binding.mainActivityTvTotalFlips.text = "Total Flips : $total"
+        binding.mainActivityTvHeadFlips.text = "Total Heads : $heads"
+        binding.mainActivityTvTailFlips.text = "Total Tails : $tails"
+//        totalFlipText.text = "Total Flips : $total"
+//        headFlipText.text = "Total Heads : $heads"
+//        tailFlipText.text = "Total Tails : $tails"
 
         updateStatistics()
     }
@@ -96,37 +95,44 @@ class MainActivity : AppCompatActivity() {
             tailsPercentResult = round((tails.toDouble() / total) * 100)
         }
 
-        headsPercentText.text = "Heads : $headsPercentResult%"
-        tailsPercentText.text = "Tails : $tailsPercentResult%"
+//        headsPercentText.text = "Heads : $headsPercentResult%"
+//        tailsPercentText.text = "Tails : $tailsPercentResult%"
+        binding.mainActivityTvHeadsPercent.text = "Heads : $headsPercentResult%"
+        binding.mainActivityTvTailsPercent.text = "Tails : $tailsPercentResult%"
 
-        headsProgressBar.progress = headsPercentResult.toInt()
-        tailsProgressBar.progress = tailsPercentResult.toInt()
+//        headsProgressBar.progress = headsPercentResult.toInt()
+//        tailsProgressBar.progress = tailsPercentResult.toInt()
+        binding.mainActivityPbHead.progress = headsPercentResult.toInt()
+        binding.mainActivityPbTail.progress = tailsPercentResult.toInt()
     }
 
     private fun reset() {
         heads = 0
         tails = 0
         total = 0
-        coinImageView.setImageResource(R.drawable.ic_flip_icon)
-        totalFlipText.text = "Total Flips : $total"
-        headFlipText.text = "Total Heads : $heads"
-        tailFlipText.text = "Total Tails : $tails"
+
+        // TODO
+//        coinImageView.setImageResource(R.drawable.ic_flip_icon)
+//        totalFlipText.text = "Total Flips : $total"
+//        headFlipText.text = "Total Heads : $heads"
+//        tailFlipText.text = "Total Tails : $tails"
 
         updateStatistics()
     }
 
+    // TODO
     private fun simulate() {
-        var simNumber = 0
-        if (simulateEditText.text.toString() != "") {
-            simNumber = simulateEditText.text.toString().toInt()
-        }
-        // 먼저 sum number 가져온다.
-
-
-        for (i in 1..simNumber) {
-            flip()
-        }
-        simulateEditText.setText("")
+//        var simNumber = 0
+//        if (simulateEditText.text.toString() != "") {
+//            simNumber = simulateEditText.text.toString().toInt()
+//        }
+//        // 먼저 sum number 가져온다.
+//
+//
+//        for (i in 1..simNumber) {
+//            flip()
+//        }
+//        simulateEditText.setText("")
     }
 
 
